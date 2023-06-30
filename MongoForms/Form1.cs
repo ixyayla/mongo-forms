@@ -5,7 +5,7 @@ namespace MongoForms
 {
     public partial class Form1 : Form
     {
-        private const string CONN_STRING = "REPLACE_WITH_ATLAS_CONNECTION_STRING";
+        private const string CONN_STRING = "mongodb+srv://ildenizy:iXf57fzPnzqmy2LH@cluster0.yjpalln.mongodb.net/?retryWrites=true&w=majority";
         private const string DB_NAME = "BookStore";
         private const string COLL_NAME = "Books";
         private const string EDITION_COLL_NAME = "Editions";
@@ -311,6 +311,28 @@ namespace MongoForms
                 )
                 .ToList()
                 ;
+        }
+
+        private void btnFindAll_Click(object sender, EventArgs e)
+        {
+            var res = _booksCollection.Find(x => x.Colors.Count > 1).ToList();
+
+        }
+
+        private void btnUnwind_Click(object sender, EventArgs e)
+        {
+            var filterDefiniton = Builders<Book>.Filter.Empty;
+            var resultByColor = _booksCollection.Aggregate()
+                .Match(filterDefiniton)
+                .Unwind<Book, BookUnwindResultByColor>(x => x.Colors)
+                .ToList();
+
+            var resultByShelf = _booksCollection.Aggregate()
+                .Match(filterDefiniton)
+                .Unwind<Book, BookUnwindResultByShelf>(x => x.ShelfCounts)
+                .ToList();
+
+
         }
     }
 }

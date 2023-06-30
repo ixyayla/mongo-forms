@@ -45,6 +45,8 @@
             btnTransaction = new Button();
             btnPopulateEdition = new Button();
             btnLookUp = new Button();
+            btnFindAll = new Button();
+            btnUnwind = new Button();
             SuspendLayout();
             // 
             // btnCreateDb
@@ -217,11 +219,33 @@
             btnLookUp.UseVisualStyleBackColor = true;
             btnLookUp.Click += btnLookUp_Click;
             // 
+            // btnFindAll
+            // 
+            btnFindAll.Location = new Point(229, 202);
+            btnFindAll.Name = "btnFindAll";
+            btnFindAll.Size = new Size(210, 23);
+            btnFindAll.TabIndex = 18;
+            btnFindAll.Text = "Find All";
+            btnFindAll.UseVisualStyleBackColor = true;
+            btnFindAll.Click += btnFindAll_Click;
+            // 
+            // btnUnwind
+            // 
+            btnUnwind.Location = new Point(229, 231);
+            btnUnwind.Name = "btnUnwind";
+            btnUnwind.Size = new Size(210, 23);
+            btnUnwind.TabIndex = 19;
+            btnUnwind.Text = "Unwind";
+            btnUnwind.UseVisualStyleBackColor = true;
+            btnUnwind.Click += btnUnwind_Click;
+            // 
             // Form1
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
+            Controls.Add(btnUnwind);
+            Controls.Add(btnFindAll);
             Controls.Add(btnLookUp);
             Controls.Add(btnPopulateEdition);
             Controls.Add(btnTransaction);
@@ -264,5 +288,7 @@
         private Button btnTransaction;
         private Button btnPopulateEdition;
         private Button btnLookUp;
+        private Button btnFindAll;
+        private Button btnUnwind;
     }
 }
